@@ -6,16 +6,16 @@ const Contacts = () => {
     useEffect(() => {
         const fetchContacts = async () => {
             try {
-                
+                console.log("Here 1");
                 const response = await fetch("https://cs3870-backend-ckcw.onrender.com/contacts");
-                
+                console.log("Here 2");
                 if (!response.ok) {
-                    throw new Error("Failedd to fetch contacts");
+                    throw new Error("Failed to fetch contacts");
                 }
                 const data = await response.json();
                 setContacts(data);
             } catch (error) {
-                
+                console.log("Here 12");
                 alert("There was an Error loading contacts " + error.message);
             }
         };
