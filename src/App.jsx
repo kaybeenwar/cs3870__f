@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Layout title="Phone Contacts Appppppppppppp"><Home /></Layout>}
+          element={<Layout title="Phone Contacts App"><Home /></Layout>}
         />
         <Route
           path="/contacts"
