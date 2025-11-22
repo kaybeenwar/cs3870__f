@@ -1,0 +1,51 @@
+import { useState, useEffect } from 'react';
+
+
+const Contacts = () => {
+    
+    useEffect(() => {
+        const fetchContacts = async () => {
+            try {
+                console.log("Here 1");
+                const response = await fetch("https://cs3870-backend-ckcw.onrender.com/contacts");
+                console.log("Here 2");
+                if (!response.ok) {
+                    throw new Error("Failedd to fetch contacts");
+                }
+                const data = await response.json();
+                setContacts(data);
+            } catch (error) {
+                console.log("Here 12");
+                alert("There was an Error loading contacts " + error.message);
+            }
+        };
+        fetchContacts();
+    }, []);
+
+    const [contacts, setContacts] = useState([]);
+    return (
+        <div className="container">
+            <h2 className="text-center mt-4">Contacts List</h2>
+            <ul className="list-group">
+                {contacts.map((contact) => (
+                    <li key={contact.id} className="list-group-item d-flex align-items-center">
+                        {contact.image_url && (
+                            <img
+                                src={contact.image_url}
+                                alt={contact.contact_name}
+                                style={{ width: '50px', height: '50px', marginRight: '15px', objectFit: 'cover' }}
+                            />
+                        )}
+                        <div>
+                            <strong>{contact.contact_name}</strong> - {contact.phone_number}
+                            <p>{contact.message}</p>
+                        </div>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+    );
+
+};
+export default Contacts;
