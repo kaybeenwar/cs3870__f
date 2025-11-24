@@ -8,7 +8,7 @@ function DeleteContact() {
         setMessage("");
         const trimmedName = name.trim();
         if (!trimmedName) {
-            setMessage("Pleasee enter a contact name.");
+            setMessage("Please enter a contact name.");
             return;
         }
         try {
